@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h1 id="CookieHeading"></h1>
+
+    <button id="CookieCursorButton">Cursor Cost 5 Cookies 1 Cookie per second </button>
+
+    <button id="CookieCursorButton2">Cursor Cost 8 Cookies 2 Cookies per second</button>
+    <!-- 1. Add another button cursor here, Cost = 8 cookies, Increments Cookie count by 2 / second -->
+
+
+    <!-- Add another button to reset the cookie count -->
+
+    <button id="CookieResetButton">Cursor Reset Cookie Count to zero</button>
+
+    <br>
+    <br>
+    <img id="CookieImage" src="Images/ChocChipCookie.jpg" width="350" height="500">
+
+    <div id="CookieActionLog">
+        
+    </div>
+
+    
+
+
+    <script type="text/javascript">
+        let myNumberOfCookies = 0;
+        let myCookieImage = document.getElementById("CookieImage");
+        let myCookieHeading = document.getElementById("CookieHeading");
+        myCookieHeading.innerHTML = "0 Cookies";
+        //Get a reference to the cursor button
+        let myCookieCursorButton = document.getElementById("CookieCursorButton");
+
+        // 2. Get a reference to the second cursor
+        let myCookieCursorButton2 = document.getElementById("CookieCursorButton2");
+        
+        let myActionCookieLog = document.getElementById("CookieActionLog");
+
+        // Get a reference to the Reset button
+        let myResetCookieButton = document.getElementById("CookieResetButton");
+
+        myCookieImage.onclick = function () {
+            myNumberOfCookies = myNumberOfCookies + 1;
+            myCookieHeading.innerHTML = myNumberOfCookies.toString() + " Cookies";
+
+            //var content = document.createTextNode("Add A New Cookie");
+
+            //myActionCookieLog.appendChild(content );
+            //var linebreak = document.createTextNode("<br>");
+            //myActionCookieLog.appendChild(linebreak);
+
+            myActionCookieLog.innerHTML += "<p>Added a another cookie</p>"
+
+
+        }
+
+
+        myCookieCursorButton.onclick = function () {
+            myActionCookieLog.innerHTML += "<p>Bought 5 Cookies adds 1 Cookie Per Second</p>"
+            myNumberOfCookies = myNumberOfCookies - 5;
+            myCookieHeading.innerHTML = myNumberOfCookies.toString() + " Cookies";
+
+            setInterval(function(){
+                myNumberOfCookies = myNumberOfCookies + 1; 
+                myCookieHeading.innerHTML = myNumberOfCookies.toString() + " Cookies";
+            }, 1000)
+
+        }
+
+
+        // 3. create a .onclick function similar to the above,
+        // subtract 8 cookies to purchase
+        // set interval to increase 2 cookies / second
+
+        myCookieCursorButton2.onclick = function () {
+            myActionCookieLog.innerHTML += "<p>Bought 8 Cookies adds 2 Cookie Per Second</p>"
+            myNumberOfCookies = myNumberOfCookies - 8;
+            myCookieHeading.innerHTML = myNumberOfCookies.toString() + " Cookies";
+
+            setInterval(function(){
+                myNumberOfCookies = myNumberOfCookies + 2; 
+                myCookieHeading.innerHTML = myNumberOfCookies.toString() + " Cookies";
+            }, 1000)
+
+        }
+
+        
+        // create an .onclick function for the reset button.
+        // set the myNumberOfCookies back to zero.
+
+        myResetCookieButton.onclick = function () {
+            myNumberOfCookies = 0;
+            myCookieHeading.innerHTML = myNumberOfCookies.toString() + " Cookies";
+            myActionCookieLog.innerHTML += "<p>Cookies Reset</p>"
+        }
+
+
+            
+
+
+    </script>
+</body>
+
+</html>
